@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:ns="Microsoft.Xna.Framework">
+  <Asset Type="System.Collections.Generic.List[System.String]">
+    <Item>These</Item>
+    <Item>are</Item>
+    <Item>expected</Item>
+    <Item>to</Item>
+    <Item>exist</Item>
+  </Asset>
+</XnaContent>

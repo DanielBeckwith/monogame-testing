@@ -13,3 +13,23 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin 😄.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:😄.xml
+
+#begin NormalUnmodifiedFileName.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:NormalUnmodifiedFileName.xml
+
+#begin Some strings (should also work).xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:Some strings (should also work).xml
+
+#begin 𠂇.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:𠂇.xml
+

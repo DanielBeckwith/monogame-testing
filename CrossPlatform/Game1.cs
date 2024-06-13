@@ -1,4 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -26,7 +31,40 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        // TODO: use this.Content to load your game content here
+        List<string> contentNames = new List<string>
+        {
+            "NormalUnmodifiedFileName",
+            "Some strings (should also work)",
+            "😄", // emoji
+            "𠂇" // rare character from the Unified Ideographs Extension B
+        };
+
+        List<string> contentNamesThatFail = new List<string>();
+        List<Exception> exceptions = new List<Exception>();
+
+        foreach (string contentName in contentNames)
+        {
+            try
+            {
+                var values = Content.Load<List<string>>(contentName);
+                Debug.WriteLine($"Successfully loaded values in '{contentName}'");
+                foreach (var value in values)
+                {
+                    Debug.WriteLine($"Value: {value}");
+                }
+                Debug.WriteLine($"Values in '{contentName}' complete.\n");
+            }
+            catch (Exception ex)
+            {
+                contentNamesThatFail.Add(contentName);
+                exceptions.Add(ex);
+            }
+        }
+
+        if (exceptions.Count > 0)
+        {
+            throw new AggregateException($"The following content names failed: '{string.Join("', '", contentNamesThatFail)}'. See the inner exceptions for more information.", exceptions);
+        }
     }
 
     protected override void Update(GameTime gameTime)
